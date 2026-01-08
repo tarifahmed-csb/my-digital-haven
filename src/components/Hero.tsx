@@ -18,25 +18,20 @@ const Hero = () => {
       <div className="container relative z-10 px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Eyebrow text */}
-          <p className="text-primary text-sm md:text-base uppercase tracking-widest mb-6 opacity-0 animate-fade-up font-medium">
-            Creative Developer & Designer
-          </p>
+
 
           {/* Main heading */}
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8 opacity-0 animate-fade-up stagger-1">
             Hello, I'm{" "}
-            <span className="text-gradient">Alex</span>
+            <span className="text-gradient">Tarif</span>
             <br />
-            <span className="text-foreground/70">I build digital</span>
-            <br />
-            experiences.
+            <span className="text-foreground/70 text-4xl md:text-6xl mt-4 block">
+              M.S. Data Science | B.S. in CS & Business
+            </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up stagger-2 leading-relaxed">
-            A passionate developer crafting beautiful, interactive web experiences
-            with modern technologies and thoughtful design.
-          </p>
+
 
           {/* Social Links - More visible */}
           <div className="flex items-center justify-center gap-4 mb-10 opacity-0 animate-fade-up stagger-2">
