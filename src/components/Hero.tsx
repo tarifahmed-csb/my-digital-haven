@@ -4,11 +4,11 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background glow effect */}
-      <div 
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-30 animate-pulse-glow pointer-events-none"
         style={{ background: "var(--gradient-glow)" }}
       />
-      
+
       {/* Floating orbs */}
       <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-32 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
@@ -34,14 +34,14 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up stagger-2 leading-relaxed">
-            A passionate developer crafting beautiful, interactive web experiences 
+            A passionate developer crafting beautiful, interactive web experiences
             with modern technologies and thoughtful design.
           </p>
 
           {/* Social Links - More visible */}
           <div className="flex items-center justify-center gap-4 mb-10 opacity-0 animate-fade-up stagger-2">
             <a
-              href="https://github.com"
+              href="https://github.com/tarifahmed-csb/tarifahmed-csb"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 px-5 py-3 bg-secondary/80 hover:bg-primary text-foreground hover:text-primary-foreground rounded-full transition-all duration-300 hover:shadow-[0_0_25px_hsl(var(--primary)/0.4)] hover:-translate-y-1"
@@ -50,7 +50,7 @@ const Hero = () => {
               <span className="font-medium text-sm">GitHub</span>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/tarifahmed"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 px-5 py-3 bg-secondary/80 hover:bg-primary text-foreground hover:text-primary-foreground rounded-full transition-all duration-300 hover:shadow-[0_0_25px_hsl(var(--primary)/0.4)] hover:-translate-y-1"

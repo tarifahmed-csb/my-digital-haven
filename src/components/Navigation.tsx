@@ -37,11 +37,10 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
-        scrolled 
-          ? "glass rounded-full px-3 py-2 shadow-[0_4px_30px_hsl(0_0%_0%/0.3)]" 
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled
+          ? "glass rounded-full px-3 py-2 shadow-[0_4px_30px_hsl(0_0%_0%/0.3)]"
           : "px-4 py-2"
-      }`}
+        }`}
     >
       <div className="flex items-center gap-2">
         <ul className="flex items-center gap-1">
@@ -49,22 +48,21 @@ const Navigation = () => {
             <li key={link.href}>
               <a
                 href={link.href}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeSection === link.href.slice(1)
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeSection === link.href.slice(1)
                     ? "bg-primary text-primary-foreground shadow-[0_0_15px_hsl(var(--primary)/0.4)]"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                }`}
+                  }`}
               >
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
-        
+
         {/* Quick social links in nav */}
         <div className="hidden md:flex items-center gap-1 ml-2 pl-2 border-l border-border/50">
           <a
-            href="https://github.com"
+            href="https://github.com/tarifahmed-csb/tarifahmed-csb"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
@@ -73,7 +71,7 @@ const Navigation = () => {
             <Github className="w-4 h-4" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/tarifahmed"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"

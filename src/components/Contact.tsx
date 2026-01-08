@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Mail, MapPin, Send, Linkedin, Twitter, Github } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "https://github.com/tarifahmed-csb/tarifahmed-csb", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/tarifahmed", label: "LinkedIn" },
 ];
 
 const Contact = () => {
@@ -35,14 +34,22 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formState);
+    const subject = `Portfolio Contact from ${formState.name}`;
+    const body = `Name: ${formState.name}%0D%0AEmail: ${formState.email}%0D%0A%0D%0AMessage:%0D%0A${formState.message}`;
+    window.location.href = `mailto:tarifahmed.csb@gmail.com?subject=${subject}&body=${body}`;
+
+    // Reset form after sending
+    setFormState({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
     <section id="contact" ref={sectionRef} className="py-32 relative">
       {/* Background glow */}
-      <div 
+      <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-20 pointer-events-none"
         style={{ background: "var(--gradient-glow)" }}
       />
@@ -63,9 +70,8 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact info */}
             <div
-              className={`transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-              }`}
+              className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+                }`}
             >
               <div className="space-y-8">
                 <div className="glass p-6 rounded-2xl flex items-start gap-4">
@@ -74,8 +80,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:hello@alex.dev" className="text-muted-foreground hover:text-primary transition-colors">
-                      hello@alex.dev
+                    <a href="mailto:tarifahmed.csb@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      tarifahmed.csb@gmail.com
                     </a>
                   </div>
                 </div>
@@ -86,7 +92,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
+                    <p className="text-muted-foreground">Bethlehem, PA</p>
                   </div>
                 </div>
 
@@ -111,9 +117,8 @@ const Contact = () => {
 
             {/* Contact form */}
             <div
-              className={`transition-all duration-1000 delay-200 ${
-                isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
-              }`}
+              className={`transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                }`}
             >
               <form onSubmit={handleSubmit} className="glass p-8 rounded-3xl space-y-6">
                 <div>
