@@ -3,32 +3,32 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "Senior Frontend Developer",
-    company: "Tech Innovations Inc.",
-    period: "2022 - Present",
-    description: "Led the development of enterprise-scale React applications, mentored junior developers, and implemented CI/CD pipelines.",
-    technologies: ["React", "TypeScript", "GraphQL", "AWS"],
+    title: "HPC Optimization Intern",
+    company: "National Competence Centre for HPC, Montenegro",
+    period: "Jun 2025 – Aug 2025",
+    description: "Authored a 10-page board report recommending HPC adoption strategies to reduce processing times by 20-30%. Developed parallel processing scripts achieving 4x performance increase on multi-core testbeds.",
+    technologies: ["C++", "HPC", "Parallel Computing", "Performance Benchmarking"],
   },
   {
-    title: "Full Stack Developer",
-    company: "Digital Solutions Co.",
-    period: "2020 - 2022",
-    description: "Built and maintained full-stack web applications using modern JavaScript frameworks and cloud services.",
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "Docker"],
+    title: "Marketing Data Analyst",
+    company: "Organic Growth Zone",
+    period: "Jan 2025 – May 2025",
+    description: "Analyzed 500k-row dataset to build an RFM segmentation model. Delivered strategy to cut costs by purging inactive customers and boost retention with targeted 'win-back' campaigns.",
+    technologies: ["Python", "Pandas", "RFM Analysis", "Data Segmentation"],
   },
   {
-    title: "Frontend Developer",
-    company: "Creative Agency",
-    period: "2018 - 2020",
-    description: "Designed and developed responsive websites and interactive web applications for diverse clients.",
-    technologies: ["Vue.js", "SCSS", "Firebase", "Figma"],
+    title: "Process Hierarchy Modeling Intern",
+    company: "Merck",
+    period: "Jan 2024 – Dec 2024",
+    description: "Reduced data retrieval latency by 40% (250ms → 150ms) with a custom Java caching layer. Built a Spring Boot microservice integrating PostgreSQL, Neo4j, and MongoDB. Refactored legacy schemas to 3NF, eliminating 15GB of redundant data.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Neo4j", "MongoDB", "REST API"],
   },
   {
-    title: "Junior Developer",
-    company: "Startup Hub",
-    period: "2017 - 2018",
-    description: "Collaborated on building MVP products for early-stage startups, focusing on rapid prototyping.",
-    technologies: ["JavaScript", "React", "MongoDB", "Express"],
+    title: "CEO & Founder",
+    company: "WholeClothes, Lehigh University",
+    period: "Jan 2022 – Jun 2023",
+    description: "Founded an import/export venture achieving 60% lower cost-per-unit than domestic equivalents. Managed end-to-end international supply chain and B2B sales, delivering 95% on-time for all merchandise.",
+    technologies: ["Supply Chain", "B2B Sales", "Negotiations", "Logistics", "Entrepreneurship"],
   },
 ];
 
@@ -58,7 +58,7 @@ const Experience = () => {
       {/* Background elements */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
-      
+
       <div className="container px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
@@ -77,11 +77,10 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <div
                 key={exp.title}
-                className={`relative flex flex-col md:flex-row gap-8 mb-16 last:mb-0 transition-all duration-700 ${
-                  isVisible
+                className={`relative flex flex-col md:flex-row gap-8 mb-16 last:mb-0 transition-all duration-700 ${isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-12"
-                }`}
+                  }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 {/* Timeline dot */}
@@ -89,9 +88,8 @@ const Experience = () => {
 
                 {/* Content card */}
                 <div
-                  className={`ml-8 md:ml-0 md:w-1/2 ${
-                    index % 2 === 0 ? "md:pr-16" : "md:pl-16 md:ml-auto"
-                  }`}
+                  className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-16" : "md:pl-16 md:ml-auto"
+                    }`}
                 >
                   <div className="group glass p-6 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(var(--primary)/0.15)]">
                     {/* Company and period */}
