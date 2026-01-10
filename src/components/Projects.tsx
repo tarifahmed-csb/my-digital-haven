@@ -3,49 +3,40 @@ import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-featured online store with real-time inventory, payments, and admin dashboard.",
-    tags: ["React", "Node.js", "Stripe", "PostgreSQL"],
+    title: "ANPR Security System",
+    date: "June 2024 – Aug 2024",
+    description: "Real-time parking enforcement system with YOLOv8 and EasyOCR achieving 92% plate recognition accuracy on 1,000+ images. Full-stack solution featuring Flask backend (10+ REST endpoints), PostgreSQL database, and responsive dashboard with automated vehicle detection and alerts.",
+    tags: ["YOLOv8", "EasyOCR", "Flask", "PostgreSQL", "OpenCV", "React"],
     images: [
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1585974738771-84483dd9f89f?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800&h=500&fit=crop",
     ],
     liveUrl: "#",
     githubUrl: "#",
   },
   {
-    title: "AI Content Studio",
-    description: "Creative tool leveraging AI to generate and edit marketing content at scale.",
-    tags: ["Next.js", "OpenAI", "TypeScript", "Tailwind"],
+    title: "Obesity Trends Analysis: COVID-19 Impact Study",
+    date: "2011–2023",
+    description: "Led 2-person research team analyzing 12+ years of CDC obesity data across 5 demographic tracks and 50+ US states. Coordinated 7-phase analytical pipeline with bootstrap validation and t-test significance testing (95% confidence intervals), uncovering 12.5% obesity acceleration post-pandemic.",
+    tags: ["Python", "Pandas", "Statistical Analysis", "Data Visualization", "CDC Data"],
     images: [
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1675557009875-436f7a6dbf27?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop",
     ],
     liveUrl: "#",
     githubUrl: "#",
   },
   {
-    title: "Health & Fitness App",
-    description: "Cross-platform mobile app for workout tracking, nutrition, and wellness coaching.",
-    tags: ["React Native", "Firebase", "GraphQL"],
+    title: "FDA Drug Safety Prediction Model",
+    date: "Q2 2025",
+    description: "Machine learning system processing 495,866 FDA adverse event records across 7 FAERS database tables (130MB). Trained 4 models achieving 77-83% accuracy and 0.80+ ROC AUC scores, with Random Forest classifier (100 estimators) uncovering demographic risk patterns including 7.7% gender disparity.",
+    tags: ["Machine Learning", "Python", "Pandas", "Scikit-learn", "Random Forest", "Data Pipeline"],
     images: [
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=500&fit=crop",
-    ],
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    title: "Real Estate Platform",
-    description: "Property listing marketplace with virtual tours, messaging, and smart search.",
-    tags: ["Vue.js", "Python", "AWS", "Mapbox"],
-    images: [
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=500&fit=crop",
     ],
     liveUrl: "#",
     githubUrl: "#",
@@ -136,6 +127,11 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
           <h3 className="font-display text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
             {project.title}
           </h3>
+          {project.date && (
+            <p className="text-primary text-xs font-medium uppercase tracking-wider mb-3">
+              {project.date}
+            </p>
+          )}
           <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
             {project.description}
           </p>
