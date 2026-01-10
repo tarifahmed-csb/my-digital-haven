@@ -3,6 +3,19 @@ import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
+    title: "Managify - AI-Powered Job Application Tracker",
+    date: "2024",
+    description: "Full-stack job tracker with Chrome extension integrating 6+ job boards (LinkedIn, Indeed, Greenhouse), automating one-click extraction and reducing manual entry by 90%. Intelligent categorization using 17K+ keywords across 5 domains to filter 100+ irrelevant patterns. Gemini 2.0 Flash API generates ATS-optimized resumes, reducing customization from 30 minutes to 60 seconds. Scalable TypeScript backend with Prisma ORM deployed on Vercel with Google Cloud SQL.",
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Google Gemini AI", "Prisma", "Chrome Extension", "Vercel"],
+    images: [
+      "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop",
+    ],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
     title: "ANPR Security System",
     date: "June 2024 – Aug 2024",
     description: "Real-time parking enforcement system with YOLOv8 and EasyOCR achieving 92% plate recognition accuracy on 1,000+ images. Full-stack solution featuring Flask backend (10+ REST endpoints), PostgreSQL database, and responsive dashboard with automated vehicle detection and alerts.",
@@ -25,7 +38,6 @@ const projects = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop",
     ],
-    liveUrl: "#",
     githubUrl: "#",
   },
   {
@@ -38,7 +50,6 @@ const projects = [
       "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=500&fit=crop",
       "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=500&fit=crop",
     ],
-    liveUrl: "#",
     githubUrl: "#",
   },
 ];
@@ -150,16 +161,18 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
 
           {/* Links */}
           <div className="flex gap-3">
-            <a
-              href={project.liveUrl}
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] hover:-translate-y-0.5"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </a>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] hover:-translate-y-0.5"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </a>
+            )}
             <a
               href={project.githubUrl}
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-secondary text-foreground rounded-xl text-sm font-medium transition-all duration-300 hover:bg-secondary/80 hover:-translate-y-0.5"
+              className={`flex items-center justify-center gap-2 py-2.5 bg-secondary text-foreground rounded-xl text-sm font-medium transition-all duration-300 hover:bg-secondary/80 hover:-translate-y-0.5 ${project.liveUrl ? 'flex-1' : 'w-full'}`}
             >
               <Github className="w-4 h-4" />
               Source
