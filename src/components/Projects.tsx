@@ -4,7 +4,6 @@ import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 const projects = [
   {
     title: "Managify - AI-Powered Job Application Tracker",
-    date: "2024",
     description: "Full-stack job tracker with Chrome extension integrating 6+ job boards (LinkedIn, Indeed, Greenhouse), automating one-click extraction and reducing manual entry by 90%. Intelligent categorization using 17K+ keywords across 5 domains to filter 100+ irrelevant patterns. Gemini 2.0 Flash API generates ATS-optimized resumes, reducing customization from 30 minutes to 60 seconds. Scalable TypeScript backend with Prisma ORM deployed on Vercel with Google Cloud SQL.",
     tags: ["Next.js", "TypeScript", "PostgreSQL", "Google Gemini AI", "Prisma", "Chrome Extension", "Vercel"],
     images: [
@@ -13,11 +12,10 @@ const projects = [
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop",
     ],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/tarifahmed-csb/Managify",
   },
   {
     title: "ANPR Security System",
-    date: "June 2024 – Aug 2024",
     description: "Real-time parking enforcement system with YOLOv8 and EasyOCR achieving 92% plate recognition accuracy on 1,000+ images. Full-stack solution featuring Flask backend (10+ REST endpoints), PostgreSQL database, and responsive dashboard with automated vehicle detection and alerts.",
     tags: ["YOLOv8", "EasyOCR", "Flask", "PostgreSQL", "OpenCV", "React"],
     images: [
@@ -26,11 +24,10 @@ const projects = [
       "https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800&h=500&fit=crop",
     ],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/tarifahmed-csb/GateGuard",
   },
   {
     title: "Obesity Trends Analysis: COVID-19 Impact Study",
-    date: "2011–2023",
     description: "Led 2-person research team analyzing 12+ years of CDC obesity data across 5 demographic tracks and 50+ US states. Coordinated 7-phase analytical pipeline with bootstrap validation and t-test significance testing (95% confidence intervals), uncovering 12.5% obesity acceleration post-pandemic.",
     tags: ["Python", "Pandas", "Statistical Analysis", "Data Visualization", "CDC Data"],
     images: [
@@ -38,11 +35,10 @@ const projects = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop",
     ],
-    githubUrl: "#",
+    githubUrl: "https://github.com/tarifahmed-csb/Statistical-Analysis-and-Modeling---Obesity-Socioeconomic-Factor",
   },
   {
     title: "FDA Drug Safety Prediction Model",
-    date: "Q2 2025",
     description: "Machine learning system processing 495,866 FDA adverse event records across 7 FAERS database tables (130MB). Trained 4 models achieving 77-83% accuracy and 0.80+ ROC AUC scores, with Random Forest classifier (100 estimators) uncovering demographic risk patterns including 7.7% gender disparity.",
     tags: ["Machine Learning", "Python", "Pandas", "Scikit-learn", "Random Forest", "Data Pipeline"],
     images: [
@@ -50,7 +46,7 @@ const projects = [
       "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=500&fit=crop",
       "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=500&fit=crop",
     ],
-    githubUrl: "#",
+    githubUrl: "https://github.com/tarifahmed-csb/FDA-FAERS-Drug-Safety-Prediction-Model",
   },
 ];
 
@@ -138,11 +134,7 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
           <h3 className="font-display text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
             {project.title}
           </h3>
-          {project.date && (
-            <p className="text-primary text-xs font-medium uppercase tracking-wider mb-3">
-              {project.date}
-            </p>
-          )}
+
           <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
             {project.description}
           </p>
