@@ -66,24 +66,22 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-3xl transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      className={`group relative overflow-hidden rounded-3xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        }`}
       style={{ transitionDelay: `${index * 150}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Glow effect on hover */}
-      <div 
-        className={`absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-3xl blur-xl transition-opacity duration-500 ${
-          isHovered ? "opacity-60" : "opacity-0"
-        }`}
+      <div
+        className={`absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-3xl blur-xl transition-opacity duration-500 ${isHovered ? "opacity-60" : "opacity-0"
+          }`}
       />
-      
+
       <div className="relative glass border border-border/50 rounded-3xl overflow-hidden transition-all duration-500 hover:border-primary/50">
         {/* Image carousel */}
         <div className="relative h-52 overflow-hidden">
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-out h-full"
             style={{ transform: `translateX(-${currentImage * 100}%)` }}
           >
@@ -96,7 +94,7 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
               />
             ))}
           </div>
-          
+
           {/* Image navigation */}
           {project.images.length > 1 && (
             <>
@@ -112,24 +110,23 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
-              
+
               {/* Dots indicator */}
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
                 {project.images.map((_, dotIndex) => (
                   <button
                     key={dotIndex}
                     onClick={(e) => { e.stopPropagation(); setCurrentImage(dotIndex); }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentImage === dotIndex 
-                        ? "bg-primary w-6" 
-                        : "bg-foreground/40 hover:bg-foreground/60"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${currentImage === dotIndex
+                      ? "bg-primary w-6"
+                      : "bg-foreground/40 hover:bg-foreground/60"
+                      }`}
                   />
                 ))}
               </div>
             </>
           )}
-          
+
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
         </div>
@@ -157,14 +154,14 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
 
           {/* Links */}
           <div className="flex gap-3">
-            <a 
+            <a
               href={project.liveUrl}
               className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] hover:-translate-y-0.5"
             >
               <ExternalLink className="w-4 h-4" />
               Live Demo
             </a>
-            <a 
+            <a
               href={project.githubUrl}
               className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-secondary text-foreground rounded-xl text-sm font-medium transition-all duration-300 hover:bg-secondary/80 hover:-translate-y-0.5"
             >
@@ -204,14 +201,14 @@ const Projects = () => {
       {/* Background elements */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/3 right-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
-      
+
       <div className="container px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
             <p className="text-primary text-sm uppercase tracking-widest mb-4 font-medium">Portfolio</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Featured <span className="text-gradient">Projects</span>
+              Projects and <span className="text-gradient">Research</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               A selection of my recent work. Each project represents unique challenges and creative solutions.
@@ -221,21 +218,16 @@ const Projects = () => {
           {/* Projects grid */}
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard 
-                key={project.title} 
-                project={project} 
-                index={index} 
-                isVisible={isVisible} 
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+                isVisible={isVisible}
               />
             ))}
           </div>
 
-          {/* View all button */}
-          <div className="text-center mt-16">
-            <button className="px-8 py-4 bg-secondary text-foreground rounded-full font-medium transition-all duration-300 hover:bg-secondary/80 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)] hover:-translate-y-1">
-              View All Projects
-            </button>
-          </div>
+
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ const experiences = [
     period: "Jun 2025 – Aug 2025",
     description: "Authored a 10-page board report recommending HPC adoption strategies to reduce processing times by 20-30%. Developed parallel processing scripts achieving 4x performance increase on multi-core testbeds.",
     technologies: ["C++", "HPC", "Parallel Computing", "Performance Benchmarking"],
+    logo: "/logos/NationalCompetenceCenter.jpg"
   },
   {
     title: "Marketing Data Analyst",
@@ -15,6 +16,7 @@ const experiences = [
     period: "Jan 2025 – May 2025",
     description: "Analyzed 500k-row dataset to build an RFM segmentation model. Delivered strategy to cut costs by purging inactive customers and boost retention with targeted 'win-back' campaigns.",
     technologies: ["Python", "Pandas", "RFM Analysis", "Data Segmentation"],
+    logo: "/logos/OrganicGrowth.jpeg"
   },
   {
     title: "Process Hierarchy Modeling Intern",
@@ -22,6 +24,7 @@ const experiences = [
     period: "Jan 2024 – Dec 2024",
     description: "Reduced data retrieval latency by 40% (250ms → 150ms) with a custom Java caching layer. Built a Spring Boot microservice integrating PostgreSQL, Neo4j, and MongoDB. Refactored legacy schemas to 3NF, eliminating 15GB of redundant data.",
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Neo4j", "MongoDB", "REST API"],
+    logo: "/logos/merck.jpg"
   },
   {
     title: "CEO & Founder",
@@ -78,8 +81,8 @@ const Experience = () => {
               <div
                 key={exp.title}
                 className={`relative flex flex-col md:flex-row gap-8 mb-16 last:mb-0 transition-all duration-700 ${isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
                   }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
@@ -94,8 +97,12 @@ const Experience = () => {
                   <div className="group glass p-6 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(var(--primary)/0.15)]">
                     {/* Company and period */}
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-                        <Briefcase className="w-5 h-5 text-primary" />
+                      <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center overflow-hidden shrink-0">
+                        {exp.logo ? (
+                          <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
+                        ) : (
+                          <Briefcase className="w-5 h-5 text-primary" />
+                        )}
                       </div>
                       <div>
                         <p className="font-semibold text-foreground">{exp.company}</p>
