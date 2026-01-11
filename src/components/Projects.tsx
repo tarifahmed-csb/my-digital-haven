@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const projects = [
   {
@@ -7,9 +7,10 @@ const projects = [
     description: "Full-stack job tracker with Chrome extension integrating 6+ job boards (LinkedIn, Indeed, Greenhouse), automating one-click extraction and reducing manual entry by 90%. Intelligent categorization using 17K+ keywords across 5 domains to filter 100+ irrelevant patterns. Gemini 2.0 Flash API generates ATS-optimized resumes, reducing customization from 30 minutes to 60 seconds. Scalable TypeScript backend with Prisma ORM deployed on Vercel with Google Cloud SQL.",
     tags: ["Next.js", "TypeScript", "PostgreSQL", "Google Gemini AI", "Prisma", "Chrome Extension", "Vercel"],
     images: [
-      "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop",
+      "/logo/man1.png",
+      "/logo/man2.png",
+      "/logo/man3.png",
+      "/logo/man4.png",
     ],
     liveUrl: "#",
     githubUrl: "https://github.com/tarifahmed-csb/Managify",
@@ -19,9 +20,7 @@ const projects = [
     description: "Real-time parking enforcement system with YOLOv8 and EasyOCR achieving 92% plate recognition accuracy on 1,000+ images. Full-stack solution featuring Flask backend (10+ REST endpoints), PostgreSQL database, and responsive dashboard with automated vehicle detection and alerts.",
     tags: ["YOLOv8", "EasyOCR", "Flask", "PostgreSQL", "OpenCV", "React"],
     images: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1585974738771-84483dd9f89f?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800&h=500&fit=crop",
+      "/logo/ANPR.png",
     ],
     liveUrl: "#",
     githubUrl: "https://github.com/tarifahmed-csb/GateGuard",
@@ -31,9 +30,10 @@ const projects = [
     description: "Led 2-person research team analyzing 12+ years of CDC obesity data across 5 demographic tracks and 50+ US states. Coordinated 7-phase analytical pipeline with bootstrap validation and t-test significance testing (95% confidence intervals), uncovering 12.5% obesity acceleration post-pandemic.",
     tags: ["Python", "Pandas", "Statistical Analysis", "Data Visualization", "CDC Data"],
     images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop",
+      "/logo/Obesity1.png",
+      "/logo/Obesity2.png",
+      "/logo/Obesity 3.png",
+      "/logo/obesity4.png",
     ],
     githubUrl: "https://github.com/tarifahmed-csb/Statistical-Analysis-and-Modeling---Obesity-Socioeconomic-Factor",
   },
@@ -42,24 +42,38 @@ const projects = [
     description: "Machine learning system processing 495,866 FDA adverse event records across 7 FAERS database tables (130MB). Trained 4 models achieving 77-83% accuracy and 0.80+ ROC AUC scores, with Random Forest classifier (100 estimators) uncovering demographic risk patterns including 7.7% gender disparity.",
     tags: ["Machine Learning", "Python", "Pandas", "Scikit-learn", "Random Forest", "Data Pipeline"],
     images: [
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=500&fit=crop",
+      "/logo/Drug1.png",
+      "/logo/Drug2.png",
+      "/logo/Drug3.png",
+      "/logo/Drug4.png",
     ],
     githubUrl: "https://github.com/tarifahmed-csb/FDA-FAERS-Drug-Safety-Prediction-Model",
   },
 ];
 
-const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0]; index: number; isVisible: boolean }) => {
+interface ProjectCardProps {
+  project: typeof projects[0];
+  index: number;
+  isVisible: boolean;
+  onImageClick: (images: string[], imageIndex: number, title: string) => void;
+}
+
+const ProjectCard = ({ project, index, isVisible, onImageClick }: ProjectCardProps) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const nextImage = () => {
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentImage((prev) => (prev + 1) % project.images.length);
   };
 
-  const prevImage = () => {
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length);
+  };
+
+  const handleImageClick = () => {
+    onImageClick(project.images, currentImage, project.title);
   };
 
   return (
@@ -88,7 +102,8 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
                 key={imgIndex}
                 src={image}
                 alt={`${project.title} screenshot ${imgIndex + 1}`}
-                className="w-full h-full object-cover flex-shrink-0"
+                className="w-full h-full object-cover flex-shrink-0 cursor-pointer"
+                onClick={handleImageClick}
               />
             ))}
           </div>
@@ -97,20 +112,20 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
           {project.images.length > 1 && (
             <>
               <button
-                onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                onClick={prevImage}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground z-10"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
-                onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                onClick={nextImage}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground z-10"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
 
               {/* Dots indicator */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
                 {project.images.map((_, dotIndex) => (
                   <button
                     key={dotIndex}
@@ -126,7 +141,7 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
           )}
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent pointer-events-none" />
         </div>
 
         {/* Content */}
@@ -176,9 +191,113 @@ const ProjectCard = ({ project, index, isVisible }: { project: typeof projects[0
   );
 };
 
+// Lightbox Modal Component
+interface LightboxProps {
+  isOpen: boolean;
+  images: string[];
+  currentIndex: number;
+  title: string;
+  onClose: () => void;
+  onNext: () => void;
+  onPrev: () => void;
+}
+
+const Lightbox = ({ isOpen, images, currentIndex, title, onClose, onNext, onPrev }: LightboxProps) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") onNext();
+      if (e.key === "ArrowLeft") onPrev();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose, onNext, onPrev]);
+
+  // Prevent body scroll when lightbox is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md animate-in fade-in duration-200"
+      onClick={onClose}
+    >
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 z-50"
+      >
+        <X className="w-5 h-5" />
+      </button>
+
+      {/* Image container */}
+      <div
+        className="relative max-w-7xl max-h-[90vh] w-full mx-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Project title */}
+        <div className="text-center mb-4">
+          <h3 className="font-display text-2xl font-semibold text-foreground">{title}</h3>
+          {images.length > 1 && (
+            <p className="text-muted-foreground text-sm mt-1">
+              {currentIndex + 1} / {images.length}
+            </p>
+          )}
+        </div>
+
+        {/* Image */}
+        <div className="relative flex items-center justify-center">
+          <img
+            src={images[currentIndex]}
+            alt={`${title} - Image ${currentIndex + 1}`}
+            className="max-h-[75vh] max-w-full object-contain rounded-2xl shadow-2xl"
+          />
+        </div>
+
+        {/* Navigation arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={(e) => { e.stopPropagation(); onPrev(); }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); onNext(); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Projects = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxTitle, setLightboxTitle] = useState("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -196,6 +315,21 @@ const Projects = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleImageClick = (images: string[], imageIndex: number, title: string) => {
+    setLightboxImages(images);
+    setLightboxIndex(imageIndex);
+    setLightboxTitle(title);
+    setLightboxOpen(true);
+  };
+
+  const handleLightboxNext = () => {
+    setLightboxIndex((prev) => (prev + 1) % lightboxImages.length);
+  };
+
+  const handleLightboxPrev = () => {
+    setLightboxIndex((prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length);
+  };
 
   return (
     <section id="projects" ref={sectionRef} className="py-32 relative">
@@ -224,13 +358,23 @@ const Projects = () => {
                 project={project}
                 index={index}
                 isVisible={isVisible}
+                onImageClick={handleImageClick}
               />
             ))}
           </div>
-
-
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <Lightbox
+        isOpen={lightboxOpen}
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        title={lightboxTitle}
+        onClose={() => setLightboxOpen(false)}
+        onNext={handleLightboxNext}
+        onPrev={handleLightboxPrev}
+      />
     </section>
   );
 };
